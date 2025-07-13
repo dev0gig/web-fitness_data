@@ -236,9 +236,9 @@
         }
 
         async function createCharts() {
-            const activityData = (await fetchData('../assets/fitness-data/Activity-Giga-2025-01-01-2025-07-09.csv')).filter(r => r.Date);
-            const sleepData = (await fetchData('../assets/fitness-data/Sleep-Giga-2025-01-01-2025-07-09.csv')).filter(r => r['Start Time']);
-            const vitalData = (await fetchData('../assets/fitness-data/Vital Sings-Giga-2025-01-01-2025-07-09.csv')).filter(r => r.Date);
+            const activityData = (await fetchData('assets/Activity-Giga-2025-01-01-2025-07-09.csv')).filter(r => r.Date);
+            const sleepData = (await fetchData('assets/Sleep-Giga-2025-01-01-2025-07-09.csv')).filter(r => r['Start Time']);
+            const vitalData = (await fetchData('assets/Vital Sings-Giga-2025-01-01-2025-07-09.csv')).filter(r => r.Date);
 
             const allDates = [...activityData.map(d=>new Date(d.Date)), ...sleepData.map(d=>new Date(d['Start Time'].split(' ')[0])), ...vitalData.map(d=>new Date(d.Date))].filter(d => !isNaN(d));
             minDate = new Date(Math.min.apply(null,allDates));
